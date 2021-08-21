@@ -1,30 +1,30 @@
 # SPWN
 
-**Welcome to the SPWN language documentation!**
+**Добро пожаловать русскоязычную SPWN документацию!**
 
-Just in case you have just stumbled upon this website, and have no idea what _SPWN_ is, here's a brief introduction for you:
-**SPWN is a programming language that compiles to Geometry Dash levels.** What that means is that you can create levels by using not only the visual representation in the GD-editor, but using a "verbal" and _abstracted_ representation as well. This is especially useful for using GD triggers, which (if you want to make complicated stuff) are not really suited for the graphical workflow of the in-game editor.
+На всякий случай, если вы случайно попали на этот сайт и не знаете, что такое _SPWN_, то вот краткое описание специально для вас:
+**SPWN - это язык программирования, который компилируется в уровни для Geometry Dash.** Это означает, что вы можете создавать уровни, используя не только визуальное представление в GD-редакторе, но также используя "словесное" и _абстрактное_ представления. Это может оказаться особенно полезным для использования триггеров GD, которые (если вы хотите создавать сложные эффекты, движения, вычисления и прочее) не совсем подходят для графического просмотра внутриигрового редактора.
 
-If you have not worked with a programming language before, this might be a bit difficult to get into. However, you don't need much programming knowledge to get some basic things done using SPWN.
+Если у вас не опыта в программировании, то освоение SPWN может показаться вам сложным. Однако, вам не нужны навыки программирования для выполнения базовый действий в SPWN.
 
-[First off, you can click here to download the latest release of SPWN.](https://github.com/Spu7Nix/SPWN-language/releases)
+[Прежде всего, стоит скачать последнюю версию SPWN.](https://github.com/Spu7Nix/SPWN-language/releases)
 
-## Practical
+## На практике
 
-First off, let's get to know the basic workflow of using SPWN.
-SPWN is designed so that you can work in the editor and in SPWN at the same time, using the editor for its strengths, and SPWN for its.
+Прежде всего, давайте познакомимся с рабочим процессом в SPWN.
+SPWN разработан таким образом, что вы можете работать в и редакторе, и в SPWN одновременно, используя редактор из-за его сильных сторон, а SPWN - за его.
 
-> To "compile" your SPWN program, you use the command `spwn build [file]`, where `[file]` is the path to your SPWN script.
-> This command will do the following:
+> Чтобы "скомпилировать" вашу SPWN программу, нужно использовать команду `spwn build [файл]`, где `[файл]` путь к вашему SPWN скрипту.
+> Эта команды произведёт следующие действия:
 >
-> - Read your levels contents
-> - Compile your SPWN program to Geometry Dash objects, making sure to not have them interfere with the things that are already in your level.
-> - Append the new objects onto your level
+> - Прочитает содержание ваших уровней
+> - Скомпилирует вашу программу SPWN в объекты Geometry Dash, убедившись, что они не мешают тому, что уже есть на вашем уровне
+> - Добавит новые объекты в ваш уровень
 
-To be clear, you do NOT have to delete and remake your level when running `spwn build` on it, it will automatically remove any old SPWN objects from the level before writing new ones. `spwn build` will by default run on the level _at the top of your levels list_. If you want it to run on a specific level, you can use the flag `--level-name [name in quotation marks]`. For example: `spwn build script.spwn --level-name "my level"`
+Для справки, вам НЕ следует удалять или переделывать ваш уровень при запуске `spwn build`, программа сама удалит все старые объекты и сменит их новыми. `spwn build` будет запускать по умолчанию _на верхнем уровне в списке_. Если вам нужно изменить конкретный уровень, вам стоит использовать флаг `--level-name [имя в кавычках]`. Для примера: `spwn build script.spwn --level-name "my level"`
 
-> **Note:** The standard file ending for SPWN scripts is `.spwn`
+> **Примечание:** Стандартное расширение для SPWN скрипта - это `.spwn`
 
-> **Note:** SPWN generates triggers near the top of your level, so you might not see any difference.
+> **Примечание:** SPWN генерирует триггеры на максимальной высоте вашего уровня, поэтому вы можете не заметить визуальных изменений в редакторе.
 
-The first part of this documentation is an introduction to the features of SPWN, divided into courses. Read the [Trigger Language](triggerlanguage/trigger_language.md) course to get started!
+Первая часть этой документации - это введение в функции SPWN, разделенное на уроки. Прочитайте [Язык триггеров](triggerlanguage/trigger_language.md), чтобы начать обучение!
