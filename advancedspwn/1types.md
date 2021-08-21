@@ -1,40 +1,40 @@
-# Datatypes in SPWN
+# Типы данных в SPWN
 
-A SPWN value's datatype always comes from it's `type` property. You can see this by printing out the `type` of different kinds of values:
+Типы данных SPWN хранятся в свойстве `type`. Ты можешь проверить это, добавив свойство `type` к разным типам данных:
 
 ```spwn
 extract $
 
-print(10.type)       // @number
-print("hello".type)  // @string
-print(10g.type)      // @group
-print(10g.move.type) // @macro
-print(!{}.type)      // @trigger_function
+print(10.type)       // @number           или число
+print("hello".type)  // @string           или строка
+print(10g.type)      // @group            или группа
+print(10g.move.type) // @macro            или макроc
+print(!{}.type)      // @trigger_function или функция триггера
 ```
 
-The value of the `type` property is called a _type indicator_, and is a value in and of itself. A type indicator always starts with a `@`, followed by the type name.
+Значение свойства `type` называется _type indicator (значение типа)_ и само является значением. Значение типа всегда начинается с `@` и продолжается именем типа.
 
-?> _**Note:** Since a type indicator is a value itself, you can also get it's type, for example `@number.type` will return `@type_indicator`_
+?> _**Примечание:** Так как свойство `type` само по себе является значением, вы можете получить его тип данных, к примеру: `@number.type` вернёт `@type_indicator`_
 
-# Custom types
+# Нестандартные типы данных
 
-A dictionary, by default, will have a type property of `@dictionary`. However, since you can set the members of a dictionary yourself, you can also set the `type` property, effectively changing the type altogether.
+Слова по умолчанию будет именить тип `@dictionary`. Однако вы можете самостоятельно устанавливать членов словаря, а значит вы можете установить своё свойство `type`, фактически изменив тип данных.
 
 ```spwn
 my_number = {
-    type: @number
+    type: @number или число
 }
 
-// SPWN will now think my_number is a number, because my_number.type is @number
+// SPWN будет думать, что my_number это число, потому что my_number.type равняется @number
 ```
 
-It is not that useful to set a dictionary to a type that already exists, though. What is more useful, is making your own type. You can declare a new type like this:
+Однако не так полезно делать тип словаря, который уже существует. Это может быть полезно, если вы делаете свой собственный тип данных. Пример нового типа:
 
 ```spwn
 type @person
 ```
 
-This enables you to create new values with the type indicator `@person`.
+Это позволит вам устанавливать новые значения с типом данных `@person`.
 
 ```spwn
 person = {
@@ -44,7 +44,7 @@ person = {
 }
 ```
 
-This is a little fiddly to write though. Luckily, there is a much cleaner way of writing the same thing:
+Однако писать так не совсем удобно. К счастью, есть способ писать более чисто:
 
 ```spwn
 person = @person::{
@@ -53,11 +53,11 @@ person = @person::{
 }
 ```
 
-This is exactly the same value, just written differently. This also makes the value slightly more readable.
+На самом деле это одно и то же значение. Однако вторая запись получается более читабельной.
 
-# Macro argument types
+# Тип аргумента макроса
 
-When making macros, you often want to limit what kind of values the arguments can be, to avoid confusing errors and behavior. You can do this by defining a set type for each argument like this:
+При создании макроса часто может понадобится ограничение типов аргументов, дабы избежать путаницы и ошибок. Вы можете сделать это, заранее объявив тип данных для каждого аргумента:
 
 ```spwn
 add = (a: @number, b: @number) {
@@ -65,7 +65,7 @@ add = (a: @number, b: @number) {
 }
 ```
 
-If your argument can accept multiple types, you can use a `|` symbol:
+Если ваш аргумент поддерживает различные типы данных, вы можете использовать символ `|` для их объединения:
 
 ```spwn
 combine = (a: @number | @string, b: @number | @string) {
@@ -73,7 +73,7 @@ combine = (a: @number | @string, b: @number | @string) {
 }
 ```
 
-If you want the argument to be an array containing a specific type, you can do so with square brackets:
+Если вы хотите, чтобы аргумент был массивом с определённым типом данных, используйте квадратные скобки по типу:
 
 ```spwn
 sum = (numbers: [@number]) {
@@ -85,7 +85,7 @@ sum = (numbers: [@number]) {
 }
 ```
 
-You can also combine all these elements to your hearts desire:
+Вы можете комбинировать эти элементы по своему желанию:
 
 ```spwn
 my_crazy_macro = (arg: @number | [[@number] | @string]) {
@@ -93,4 +93,4 @@ my_crazy_macro = (arg: @number | [[@number] | @string]) {
 }
 ```
 
-?> _**Note:** The expression that goes after the `argument: ` is called a **pattern**, and is also it's own type. You can check if a value matches a pattern with the builtin `$.matches(value, pattern)`_
+?> _**Примечание:** Выражение после значения `argument: ` называется **pattern или шаблон**, а так же является собственным типом. Вы можете проверить, соответствует ли значение шаблону с помощью встроенного `$.matches(value, pattern)`_
