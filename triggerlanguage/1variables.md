@@ -1,69 +1,69 @@
-# Variables
+# Переменные
 
-Since you can't really print `Hello, world!` to the console using Geometry Dash triggers, we're going to get straight into the main features of SPWN, the first of which being **variables**.
+Так как мы не можем вывести в консоль `Hello, world!`, при помощи триггеров в Geometry Dash, мы сразу перейдём к основным функциям языка SPWN, первая из которых **переменные**.
 
-**In SPWN, variables are defined like this:**
+**В SPWN переменные объявляются следующим образом:**
 
 ```spwn
-// let [variable name] = [value]
+// let [имя переменной] = [значение]
 
 let a = 10
 let b = 60
 let c = a + b
 ```
 
-When referencing the variables' values, these will work as in any other programming language, however, when trying to change the value of variables in SPWN, they are quite limited. Therefore, most variables you make in SPWN will be _constant_. For convenience, you can define constant variables like this:
+При обращении к значениям переменных они будут работать как и в любом другом языке программирования, но если мы пытаемся изменять переменные в SPWN, их возможности будут слегка ограничены. Из этого следует, что большинство переменных в SPWN будут _константами или постоянными_. Для понимания, вы можете объявлять константы следующим образом:
 
 ```spwn
-// [variable name] = [value]
+// [имя переменной (константы)] = [значение]
 
 a = 10
 b = 60
 c = a + b
 ```
 
-?> _**Note:** There is no case when using SPWN where you **have** to use constant variables, but it is seen as good programming etiquette to only let your variables be mutable when needed._
+?> _**Примечание:** У вас **нету обязательства** использовать использовать в SPWN постоянные, но это будет хорошим тоном в программировании и позволит изменять переменные только тогда, когда это требуется._
 
-?> _**Note:** When you need a mutable variable, you will most likely be using a ["counter"](triggerlanguage/5counter.md) from the standard library, which is a wrapper around the item ID system in Geometry Dash. There will be more on this in a couple of pages._
+?> _**Примечание:** Когда вам понадобится изменяемая переменная, скорее всего, вам понадобится ["счётчик"](triggerlanguage/5counter.md) из стандартной библиотеки, который является оболочкой для системы идентификаторов элементов в Geometry Dash. Об этом будет подробнее через пару страниц._
 
-# SPWN Values
+# Значения в SPWN
 
-So, what kind of stuff can you put in your variables? Well, a lot of different things.
-Some value types are ones you might be familiar with from other languages:
+Итак, что вы можете добавить в переменные? Довольно много всего.
+Некоторые типы данных (и значений) могут быть вам известны из других языков:
 
 ```spwn
-num = 10
+num = 10                      // Числовая
 
-text = "Hello, I'm a string!"
+text = "Hello, I'm a string!" // Строчная
 
-array = [1, 2, 3]
+array = [1, 2, 3]             // Массив
 
-boolean = true
+boolean = true                // Логическая
 
-dictionary = {
+dictionary = {                // Словарь
     a: 1,
     b: 2,
     c: 3
 }
 ```
 
-These values can be used as you would in any other programming language.
+Эти значения можно использовать точно так же, как и в любом другом языке программирования.
 
-Here are some examples:
+Вот некоторые примеры кода:
 
 ```spwn
 num = -(1000 * 1000) / 10 // -100000
 
-name = "Spu7Nix"
+name = "Spu7Nix" // MicRofaRatOV :P
 text = "Hello, my name is " + name + "!"
 
 let array = [1, 2, 3]
 my_number = array[2] // 3
 
-array.push(4) // after this, the array will now be [1, 2, 3, 4]
+array.push(4) // после этого массив будет выглядеть так: [1, 2, 3, 4]
 
 boolean = true
-boolean2 = !boolean // false
+boolean2 = !boolean // false или ложь
 
 let dict = {
     a: 1,
@@ -71,36 +71,36 @@ let dict = {
     c: 3
 }
 
-a = dict.a // 1
-dict.d = 4 //inserts a new key "d" with a constant value of 4 into dict
-let dict.e = 5 //inserts a new key "e" with a mutable value of 5 into dict
-let dict['f'] = 6 // indexing is also supported for adding to dictionaries
+a = dict.a        // 1
+dict.d = 4        // Добавляет новый ключ "d" с постоянным значением 4 в словарь
+let dict.e = 5    // Добавляет новый ключ "e" с переменным значением 5 в словарь
+let dict['f'] = 6 // Так же имеется индексация, для добавления в словарь
 ```
 
-?> _**Note:** To see a list of all the operators in SPWN, go [here](operators.md)_
+?> _**Примечание:** Чтобы увидеть весь список операторов в SPWN, перейдите [сюда](operators.md)_
 
-## IDs
+## Идентификаторы
 
-In SPWN, there are also values that that are useful specifically when making Geometry dash levels:
+В SPWN также есть значения, которые особенно полезны при создании уровней Geometry Dash:
 
 ```spwn
-group = 10g // group 10
-color = 10c // color 10
-item  = 10i // item-ID 10
-block = 10b // collision block-ID 10
+group = 10g // group или группа 10
+color = 10c // color или цвет 10
+item  = 10i // item-ID или идентификатор предмета 10
+block = 10b // collision block-ID или идентификатор блока столкновения 10
 ```
 
-These values are called `ID`s, and are extremely essential. Any time you want to get some actual output in your levels, you will use these. Sometimes you want to point to a specific `ID`, for example if you have already made a player-character in the editor and you want to move it around. However, if that's not the case, and you will only be referencing these values inside your code, you won't need to know what `ID` you're using. In that case you can use this `?` notation:
+Эти значения называются `ID`s (или же идентификаторы) и они чрезвычайно важны. Каждый раз, когда вы будете применять SPWN, вы будете использовать их для получения результата. Иногда вам потребуется указать конкретный `ID`, например, если вы уже создали игрового персонажа в редакторе и хотите его переместить. Однако, если это не так, и вы будете ссылаться на эти значения только внутри своего кода, вам не нужно знать, какой `ID` вы используете. В таком случае вы сможете использовать обозначение в виде `?`:
 
 ```spwn
-group = ?g // some group
-color = ?c // some color
-item  = ?i // some item-ID
-block = ?b // some collision block-ID
+group = ?g // some group (какая-то группа)
+color = ?c // some color (какой-то цвет)
+item  = ?i // some item-ID (какой-то идентификатор)
+block = ?b // some collision block-ID (какой-то идентификатор блока столкновения)
 ```
 
-_You can think of this as being the same as pressing the "next free" button when adding a group to an object, except you won't know its value_
+_Вы можете интерпретировать это, как нажатие на кнопку "next free" в редакторе, которая добавляет объект в следующую свободную группу, за исключением того, что вы не знаете её значение_
 
-These are all the value types you need to worry about for now.
+Это все типы значений, о которых вам надо знать.
 
-[**Next page**](triggerlanguage/2basic_triggers.md)
+[**Следующая страница**](triggerlanguage/2basic_triggers.md)
