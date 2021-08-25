@@ -1,32 +1,32 @@
-# Basic triggers
+# Основные триггеры
 
-Alright, lets actually make our SPWN program do something. Triggers in SPWN are made by calling a macro, usually on an id.
+Окей, давайте всё же заставим нашу SPWN-программу что-то сделать. Триггеры в SPWN создаются путем вызова макроса, обычно по ID.
 
-?> _**Note:** In SPWN, a macro is the same thing as what you would usually call a "function" in other programming languages, but in SPWN, the word "function" may be confused with another thing called a **trigger function**, so we will use the term "macro" here_
+?> _**Примечание:** Макрос в SPWN - то же самое, что и "функция" в другом языке программирования, но в SPWN слово "функция" может быть спутана с **функцией триггера**, поэтому здесь мы будем использовать термин "макрос"_
 
-As you probably know, to move objects in Geometry Dash, you move the _group_ the objects are in. If you wanted to, say, move group 5 ten units on the x-axis in 0.5 seconds, you would add a move trigger with those settings. In SPWN we do it like this:
+Как мы уже знаем, чтобы двигать объекты в Geometry Dash, мы должны поместить их в _группу_, в которой они находятся. Если нам потребуется переместить группу 5 на десять единиц (десятых блоков) по оси-x за 0.5 секунд, мы должны добавить триггеры с некоторыми настройками. В SPWN мы должны сделать что-то наподобие этого:
 
 ```spwn
-// group.move(x, y, [duration], [easing type], [easing rate])
+// group.move(x, y, [длительность сек.], [тип окончания], [сила окончания])
 5g.move(10, 0, 0.5)
 ```
 
-The `move` macro doesn't actually just call a move trigger, it also adds a delay of whatever you set your duration to. This means that this code
+На самом деле макрос `move` (движение) не просто вызывает действие триггера, но так же создаёт задержку до конца выполнения. Значит следующий код
 
 ```spwn
 1g.move(0, 10, 0.5)
 2g.move(0, 10, 0.5)
 ```
 
-will result in that group 1 moves up for 0.5 seconds, and then, when group 1 is done moving, group 2 will move up for 0.5 seconds.
+выполнит перемещение группы 1 вверх за 0.5 секунд, а после этого, когда 1 закончит движение, группа 2 поднимется вверх за 0.5 секунд.
 
-This is useful for a lot of cases, but sometimes you also want to move two groups at the same time. In this case, we want to use an arrow statement. You can think of the arrow statement as saying "don't wait for this macro to finish, just move on to the next statement". If we want to move both group 1 and 2 at once, this is how you would do it:
+В полезно в большинстве случаев, но иногда надо запустить две группы одновременно. В данном случае мы должны использовать оператор стрелки _->_. Вы можете представить, что стрелочка сообщает: "не надо ждать, пока этот макрос завершится, просто перейди к следующей команде". Если нам надо переместить группы 1 и 2 одновременно, то мы может сделать следующее:
 
 ```spwn
--> 1g.move(0, 10, 0.5) // "don't wait for me!"
+-> 1g.move(0, 10, 0.5) // "не надо ждать меня!"
 2g.move(0, 10, 0.5)
 ```
 
-There are, of course, a lot more triggers than just the move trigger. To find the macro for any specific trigger you want to use, check out the [_SPWN Standard Library Documentation_](std-docs/std-docs.md)
+Конечно существует гораздо больше триггеров, нежели триггер движения. Чтобы найти макрос для конкретного триггера, используйте [_Документация стандартной библиотеки SPWN_](std-docs/std-docs.md) для справки.
 
-[**Next page**](triggerlanguage/3functions.md)
+[**Следующая страница**](triggerlanguage/3functions.md)
