@@ -1,59 +1,60 @@
-# Functions
+# Функции
 
-In SPWN, what is in most programming languages called a "function" is divided into two different things: Trigger functions, and macros (also referred to as just "functions"). In short, the difference is that calling a trigger function is a [_runtime action_, while calling a macro is a _compile-time action_](compiletime.md).
-In practice, this means that a macro has more features, like taking arguments and returning, while a trigger function is more _group efficient_ and _object efficient_.
+В SPWN "функции", в понимании большинства языков программирования, делятся на две разные вещи: триггерные функции и макросы (также называемые просто "функциями"). Вкратце, разница в том, что вызов функции триггера - это [_интерпретируемое действие_, а вызов макроса, это - _скомпилированное действие_](compiletime.md).1
+На практике это означает, что макрос имеет больше возможностей, таких как возврат и прием аргументов, в то время как функция триггера более _эффективна для групп_ и _эффективна для объектов_.
 
-## Calling Trigger Functions and Macros
+## Вызов функций триггеров и макросов
 
-Let's say we have a _trigger function_ called `do_thing`. To call it, we can say:
+Допустим, у нас есть _функция триггера_ `do_thing`. Давайте вызовем её:
 
 ```spwn
 do_thing!
 ```
 
-If we have a _macro_ called `do_other_thing` (that takes no arguments), we can call it like this:
+В данном примере мы имеем _макрос_, названный `do_other_thing` (он не принимает аргументы), мы можем вызвать его так:
 
 ```spwn
 do_other_thing()
 ```
 
-# Defining Trigger Functions and Macros
+# Объявление функций триггеров и макросов
 
-In SPWN, both functions and macros are types of _values_, which means to define them, we can simply put them in a variable.
+В SPWN функции триггеров и макросы являются типами данных, что позволяет нам просто поместить их в переменную.
 
-Defining a macro:
+Объявление макроса:
 
 ```spwn
 /*
-([arguments]) {[code]}
+([аргументы]) {[код]}
 */
 
 my_macro = (argument1, argument2) {
-    //code here
+    //код здесь
 }
 ```
 
-Defining a function:
+Объявление функции:
 
 ```spwn
 /*
-!{[code]}
+!{[код]}
 */
 
 my_function = !{
-    //code here
+    //код здесь
 }
 ```
 
-If you want your macro to have an optional argument, you do so by providing a default value for that argument, like this:
+Если вы хотите, чтобы у вашего макроса был необязательный аргумент, вы можете передать ему значение по умолчанию:
 
 ```spwn
-myfunc = (arg1, arg2 = 5) {/* code */}
+myfunc = (arg1, arg2 = 5) {/* код */}
 ```
 
-`arg1` is positional and required, while `arg2` does not need to be specified since it has a defualt value.
+`arg1` обязательный аргумент, когда `arg2` не требует обязательного объявления, так как он имеет значение по умолчанию.
 
 Arguments passed in to a macro are immutable by default. If you want to modify values from an argument inside your macro, you will have to redefine it as mutable:
+Аргументы, передаваемые макросу, по умолчанию неизменяемы. Если вы хотите изменить значения аргумента внутри вашего макроса, вам придется переопределить его, как переменную:
 
 ```spwn
 myfunc = (arg1) {
@@ -61,27 +62,27 @@ myfunc = (arg1) {
 }
 ```
 
-## Recursion
+## Рекурсия
 
-You can use recursion in macros, if you define them like this:
+Вы можете сделать рекурсию в макросе следующим образом:
 
 ```spwn
 recur = () {
-    /* code */
+    /* код */
     recur()
 }
 ```
 
-> **Note:** You can also define a macro like this
+> **Примечание:** Так же вы можете определить макрос так:
 >
-> `my_macro = (arguments) => expression`
+> `my_macro = (аргументы) => выражение`
 >
-> Or, for single-argument macros, like this
+> Для макросов с одним аргументом можно и так:
 >
-> `my_macro = argument=>expression`
+> `my_macro = аргумент=>выражение`
 >
-> This will be equivalent to
+> Это будет эквивалентно с
 >
-> `my_macro = (arguments) {return expression}`
+> `my_macro = (аргументы) {возвращаемое выражение}`
 
-[**Next page**](triggerlanguage/4control_flow.md)
+[**Следующая страница**](triggerlanguage/4control_flow.md)
