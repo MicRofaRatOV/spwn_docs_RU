@@ -53,7 +53,6 @@ myfunc = (arg1, arg2 = 5) {/* код */}
 
 `arg1` обязательный аргумент, когда `arg2` не требует обязательного объявления, так как он имеет значение по умолчанию.
 
-Arguments passed in to a macro are immutable by default. If you want to modify values from an argument inside your macro, you will have to redefine it as mutable:
 Аргументы, передаваемые макросу, по умолчанию неизменяемы. Если вы хотите изменить значения аргумента внутри вашего макроса, вам придется переопределить его, как переменную:
 
 ```spwn
