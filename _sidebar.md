@@ -4,7 +4,7 @@
   - [**1.1.** Переменные и значения](triggerlanguage/1variables.md)
   - [**1.2.** Основные триггеры](triggerlanguage/2basic_triggers.md)
   - [**1.3.** Функции](triggerlanguage/3functions.md)
-  - [**1.4.** Проток управления](triggerlanguage/4control_flow.md)
+  - [**1.4.** Управление потоком](triggerlanguage/4control_flow.md)
   - [**1.5.** Счётчики](triggerlanguage/5counter.md)
   - [**1.6.** Библиотеки](triggerlanguage/6libraries.md)
   - [**1.7.** Проект: Панель выбора](triggerlanguage/7selectorpanel.md)
